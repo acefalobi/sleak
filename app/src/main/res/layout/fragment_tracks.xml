@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.main.home.tracks.TracksFragment">
+
+    <data>
+
+        <import type="com.aceinteract.android.sleak.R" />
+        <import type="android.view.View" />
+
+        <variable
+                name="viewModel"
+                type="com.aceinteract.android.sleak.ui.main.home.tracks.TracksViewModel" />
+
+    </data>
+
+    <FrameLayout
+            android:background="@color/light_bright"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_songs"
+                app:fastScrollEnabled="true"
+                app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+                app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+                app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+                app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+                app:items="@{viewModel.tracks}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_track"/>
+
+    </FrameLayout>
+
+</layout>

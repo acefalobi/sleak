@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.aceinteract.android.sleak">
+
+    <uses-permission android:name="com.aceinteract.android.sleak.permission.MEDIA_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+            android:name=".SleakApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+
+        <activity
+                android:name=".ui.nowplaying.NowPlayingActivity"
+                android:parentActivityName=".ui.main.MainActivity"
+                android:theme="@style/NowPlayingTheme">
+
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.main.MainActivity" />
+
+        </activity>
+
+        <meta-data
+                android:name="asset_statements"
+                android:resource="@string/asset_statements"/>
+
+        <service
+                android:name=".service.MusicService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="com.aceinteract.android.sleak.permission.MEDIA_SERVICE">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
+
+        <receiver android:name="android.support.v4.media.session.MediaButtonReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+                android:name=".ui.main.MainActivity"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".ui.splash.SplashActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                        android:host="sleakapp.com"
+                        android:pathPattern="/open"
+                        android:scheme="http"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                        android:host="sleakapp.com"
+                        android:pathPattern="/open"
+                        android:scheme="https"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

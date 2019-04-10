@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#ffffff</color>
+    <color name="color_primary_translucent">#44ffffff</color>
+
+    <color name="color_primary_dark">#ffffff</color>
+
+    <color name="color_accent">#E91E63</color>
+    <color name="color_accent_translucent">#44E91E63</color>
+
+    <color name="color_primary_ripple">#42ffffff</color>
+    <color name="color_accent_ripple">#42E91E63</color>
+    <color name="color_light_ripple">@color/color_primary_ripple</color>
+
+    <color name="light_bright">@color/color_primary</color>
+    <color name="light_dim">#bebebe</color>
+    <color name="gray_bright">#bebebe</color>
+
+    <color name="dark_bright">#000000</color>
+    <color name="dark_dim">#323232</color>
+</resources>

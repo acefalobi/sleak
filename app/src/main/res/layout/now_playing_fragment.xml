@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.nowplaying.NowPlayingFragment">
+
+    <data>
+
+        <variable name="viewModel" type="com.aceinteract.android.sleak.ui.nowplaying.NowPlayingViewModel"/>
+
+        <variable name="listener" type="com.aceinteract.android.sleak.ui.nowplaying.NowPlayingItemActionListener"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/nowplaying"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/image_album_art_cover"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:adaptiveImage="@{viewModel.playingSong}"
+                    android:src="@color/color_accent"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/desc_np_album_art"/>
+
+            <android.support.constraint.ConstraintLayout
+                    android:background="#22ffffff"
+                    android:paddingTop="?attr/actionBarSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <android.support.v7.widget.CardView
+                        android:id="@+id/card_album_art"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="48dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        android:layout_marginStart="64dp"
+                        android:layout_marginEnd="64dp"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp">
+
+                    <ImageView
+                            android:id="@+id/image_album_art"
+                            android:scaleType="centerCrop"
+                            app:albumArtUri="@{viewModel.song.albumArtUri}"
+                            android:src="@mipmap/album_art"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/desc_np_album_art"/>
+
+                </android.support.v7.widget.CardView>
+
+                <TextView
+                        android:id="@+id/text_song_title"
+                        android:layout_marginTop="24dp"
+                        android:maxLines="1"
+                        app:layout_constraintTop_toBottomOf="@id/card_album_art"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textAppearance="@style/TextAppearance.MediumFont.Large"
+                        android:textColor="@color/color_accent"
+                        app:adaptiveTextColor="@{viewModel.playingSong}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.song.title}"
+                        tools:text="Mortal Man"/>
+
+                <TextView
+                        android:id="@+id/text_song_artist"
+                        android:maxLines="1"
+                        app:layout_constraintTop_toBottomOf="@id/text_song_title"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textColor="@color/dark_dim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.song.artist}"
+                        tools:text="Kendrick Lamar"/>
+
+                <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/seeker"
+                        tools:progress="34"
+                        app:adaptiveSeekerColor="@{viewModel.playingSong}"
+                        android:progressTint="@color/color_accent"
+                        android:progressBackgroundTint="@color/color_accent"
+                        android:layout_marginStart="-16dp"
+                        android:layout_marginEnd="-16dp"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintTop_toBottomOf="@id/text_song_artist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/btn_play_pause"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintTop_toBottomOf="@id/seeker"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:drawableSrc="@{viewModel.isPlaying ? @drawable/ic_round_pause : @drawable/ic_round_play_arrow}"
+                        tools:srcCompat="@drawable/ic_round_pause"
+                        android:onClick="@{() -> listener.onPlayPauseClicked(viewModel.isPlaying)}"
+                        app:adaptiveBackgroundColor="@{viewModel.playingSong}"
+                        app:tint="@android:color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btn_next"
+                        android:onClick="@{() -> listener.onNextClicked()}"
+                        app:backgroundTint="@android:color/transparent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:theme="@style/AppTheme.ControlHighlight"
+                        android:padding="12dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="@id/btn_play_pause"
+                        app:layout_constraintBottom_toBottomOf="@id/btn_play_pause"
+                        app:layout_constraintStart_toEndOf="@id/btn_play_pause"
+                        app:srcCompat="@drawable/ic_round_skip_next"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btn_prev"
+                        android:onClick="@{() -> listener.onPrevClicked()}"
+                        app:backgroundTint="@android:color/transparent"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:theme="@style/AppTheme.ControlHighlight"
+                        android:padding="12dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toTopOf="@id/btn_play_pause"
+                        app:layout_constraintBottom_toBottomOf="@id/btn_play_pause"
+                        app:layout_constraintEnd_toStartOf="@id/btn_play_pause"
+                        app:srcCompat="@drawable/ic_round_skip_previous"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/btn_queue"
+                        style="@style/Widget.AppCompat.Button.Borderless"
+                        android:layout_marginBottom="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:drawableTop="@drawable/ic_round_keyboard_arrow_up"
+                        android:text="@string/title_queue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                android:background="@android:color/transparent"
+                app:elevation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:theme="@style/AppTheme.AppBarOverlay.Dark">
+
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.song.album}"
+                        android:textColor="@android:color/white"
+                        tools:text="To Pimp A Butterfly"
+                        android:textSize="@dimen/toolbar_text_title_size"
+                        android:textAppearance="@style/TextAppearance.MediumFont"
+                        android:layout_gravity="center"
+                        android:id="@+id/toolbar_title" />
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

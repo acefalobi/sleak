@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="true">
+        <shape android:shape="rectangle">
+
+            <corners android:bottomRightRadius="720dp" android:topRightRadius="720dp" />
+
+            <solid android:color="@android:color/transparent" />
+
+        </shape>
+    </item>
+
+    <item android:state_selected="true">
+        <ripple android:color="@color/color_accent_translucent" />
+    </item>
+
+</selector>

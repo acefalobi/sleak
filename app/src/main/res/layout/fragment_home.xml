@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.main.home.HomeFragment"
+        tools:openDrawer="start">
+
+    <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.main.home.HomeFragment">
+
+        <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar"
+                app:elevation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/appbar_padding_top"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_weight="1"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:layout_scrollFlags="scroll|enterAlways">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/dark_bright"
+                        android:textSize="@dimen/toolbar_text_title_size"
+                        android:textAppearance="@style/TextAppearance.MediumFont"
+                        android:layout_gravity="center"
+                        android:id="@+id/toolbar_title" />
+
+            </android.support.v7.widget.Toolbar>
+
+            <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="8dp"
+                    app:tabPaddingStart="13dp"
+                    app:tabPaddingEnd="13dp"
+                    app:tabIconTint="@color/dark_dim"
+                    app:tabTextAppearance="@style/TabItemAppearance"
+                    app:tabIndicatorColor="@color/light_bright"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem1"
+                        android:icon="@drawable/ic_outline_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/title_home"/>
+
+                <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem2"
+                        android:icon="@drawable/ic_radio_button_checked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/title_albums"/>
+
+                <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem3"
+                        android:icon="@drawable/ic_outline_music_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/title_tracks"/>
+
+                <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem4"
+                        android:icon="@drawable/outline_queue_music_black_48"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/title_playlists"/>
+
+                <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem5"
+                        android:icon="@drawable/ic_person_outline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/title_artists"/>
+
+            </android.support.design.widget.TabLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            app:itemTextAppearance="@style/TextAppearance.MediumFont"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            tools:layout_gravity="end"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/activity_main_drawer"/>
+
+
+</android.support.v4.widget.DrawerLayout>

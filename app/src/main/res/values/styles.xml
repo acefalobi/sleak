@@ -1,0 +1,146 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorControlHighlight">@color/color_accent_ripple</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/color_accent</item>
+        <item name="colorPrimaryDark">@color/color_accent</item>
+        <item name="colorAccent">@color/dark_bright</item>
+        <item name="colorControlHighlight">@color/color_accent_ripple</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme.Dark">
+        <item name="android:windowBackground">@color/color_accent</item>
+    </style>
+
+    <style name="NowPlayingTheme" parent="AppTheme">
+        <item name="actionBarStyle">@style/ThemeActionBar</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="ThemeActionBar" parent="Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@null</item>
+    </style>
+
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.ControlHighlight">
+        <item name="colorControlHighlight">@color/color_accent_ripple</item>
+    </style>
+
+    <style name="AppTheme.ControlHighlight.Dark">
+        <item name="colorControlHighlight">@color/color_light_ripple</item>
+        <item name="android:textColorHighlight">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat"/>
+
+    <style name="AppTheme.AppBarOverlay.Dark" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="CollapsingToolbarTitleAppearance" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textSize">@dimen/collapsing_toolbar_text_title_size</item>
+    </style>
+
+    <style name="CollapsingToolbarTitleAppearance.Collapsed" parent="CollapsingToolbarTitleAppearance">
+        <item name="android:textSize">@dimen/toolbar_text_title_size</item>
+    </style>
+
+    <style name="TabItemAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontPath">fonts/Montserrat-Medium.ttf</item>
+    </style>
+
+    <style name="TextAppearance.MediumFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Montserrat-Medium.ttf</item>
+    </style>
+
+    <style name="TextAppearance.MediumFont.Large" parent="android:TextAppearance.Large">
+        <item name="fontPath">fonts/Montserrat-Medium.ttf</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont" parent="android:TextAppearance">
+        <item name="fontPath">fonts/Montserrat-SemiBold.ttf</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont.Small" parent="android:TextAppearance.Small">
+        <item name="fontPath">fonts/Montserrat-SemiBold.ttf</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont.Medium" parent="android:TextAppearance.Medium">
+        <item name="fontPath">fonts/Montserrat-SemiBold.ttf</item>
+    </style>
+
+    <style name="TextAppearance.BoldFont.Large" parent="android:TextAppearance.Large">
+        <item name="fontPath">fonts/Montserrat-SemiBold.ttf</item>
+    </style>
+
+    <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:paddingTop">@dimen/control_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/control_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/edit_text_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/edit_text_horizontal_padding</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="AppTheme.PrimaryButton" parent="Widget.AppCompat.Button">
+        <item name="android:paddingTop">@dimen/control_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/control_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/primary_button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/primary_button_horizontal_padding</item>
+    </style>
+
+    <style name="AppTheme.TextView"/>
+
+    <style name="AppTheme.TextView.Title">
+        <item name="android:textSize">@dimen/text_title_size</item>
+    </style>
+
+    <style name="AppTheme.TextView.Subtitle">
+        <item name="android:textSize">@dimen/text_subtitle_size</item>
+    </style>
+
+    <style name="AppTheme.TextView.Title.Light" parent="AppTheme.TextView.Title">
+        <item name="android:textColor">@color/dark_bright</item>
+    </style>
+
+    <style name="AppTheme.TextView.Subtitle.Light" parent="AppTheme.TextView.Subtitle">
+        <item name="android:textColor">@color/dark_dim</item>
+    </style>
+
+    <style name="AppTheme.TextView.Title.Dark" parent="AppTheme.TextView.Title">
+        <item name="android:textColor">@color/light_bright</item>
+    </style>
+
+    <style name="AppTheme.TextView.Subtitle.Dark" parent="AppTheme.TextView.Subtitle">
+        <item name="android:textColor">@color/light_dim</item>
+    </style>
+</resources>

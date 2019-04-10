@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.main.MainActivity">
+
+    <data>
+
+        <variable name="viewModel" type="com.aceinteract.android.sleak.ui.main.MainViewModel"/>
+
+        <variable name="listener" type="com.aceinteract.android.sleak.ui.main.MainItemActionListener"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <FrameLayout
+                android:id="@+id/frame_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/mini_player"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.CardView
+                android:id="@+id/mini_player"
+                android:onClick="@{() -> listener.onNowPlayingClicked()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            <android.support.constraint.ConstraintLayout
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.aceinteract.android.sleak.view.MediaProgressBar
+                        android:id="@+id/pb_mini_player"
+                        tools:progress="40"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:adaptiveProgressColor="@{viewModel.playingSong}"
+                        android:progressTint="@color/color_accent"
+                        android:progressBackgroundTint="@color/color_accent"
+                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"/>
+
+                <android.support.v7.widget.CardView
+                        android:id="@+id/card_album_art"
+                        app:cardCornerRadius="6dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/pb_mini_player"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_margin="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:id="@+id/image_album_art"
+                            android:scaleType="centerCrop"
+                            app:albumArtUri="@{viewModel.song.albumArtUri}"
+                            tools:src="@mipmap/album_art"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:contentDescription="@string/desc_np_album_art"/>
+
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                        app:layout_constraintStart_toEndOf="@id/card_album_art"
+                        app:layout_constraintEnd_toStartOf="@id/button_play_pause"
+                        app:layout_constraintTop_toBottomOf="@id/pb_mini_player"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:gravity="center_vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp">
+
+                    <TextView
+                            android:id="@+id/text_song_artist"
+                            android:maxLines="1"
+                            android:text="@{viewModel.song.artist}"
+                            android:textColor="@color/dark_dim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Kendrick Lamar"/>
+
+                    <TextView
+                            android:id="@+id/text_song_title"
+                            android:maxLines="1"
+                            android:text="@{viewModel.song.title}"
+                            android:textAppearance="@style/TextAppearance.MediumFont.Large"
+                            app:adaptiveTextColor="@{viewModel.playingSong}"
+                            android:textColor="@android:color/primary_text_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="Mortal Man"/>
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/button_play_pause"
+                        android:onClick="@{() -> listener.onPlayPauseClicked(viewModel.isPlaying)}"
+                        app:layout_constraintTop_toBottomOf="@id/pb_mini_player"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:backgroundTint="@android:color/transparent"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:padding="13dp"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:layout_marginEnd="8dp"
+                        android:theme="@style/AppTheme.ControlHighlight"
+                        android:tint="@color/dark_bright"
+                        app:drawableSrc="@{viewModel.isPlaying ? @drawable/ic_round_pause : @drawable/ic_round_play_arrow}"
+                        tools:srcCompat="@drawable/ic_round_play_arrow"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

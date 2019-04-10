@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_music_library"
+                android:drawableStart="@drawable/ic_library_music_black_24dp"
+                android:drawablePadding="12dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_menu_item"
+                android:text="@string/title_music_library"
+                android:gravity="center_vertical|start"
+                android:padding="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_identify_lyrics"
+                android:drawableStart="@drawable/ic_radio_button_checked"
+                android:drawablePadding="12dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_menu_item"
+                android:text="@string/title_identify_lyrics"
+                android:gravity="center_vertical|start"
+                android:padding="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/btn_music_library"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_settings"
+                android:drawableStart="@drawable/ic_settings_black_24dp"
+                android:drawablePadding="12dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_menu_item"
+                android:text="@string/title_settings"
+                android:gravity="center_vertical|start"
+                android:padding="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/btn_identify_lyrics"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
